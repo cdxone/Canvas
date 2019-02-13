@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DrawArgActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.CanvasDrawXXXActivity"/>
+        <activity android:name=".activity.CanvasChangeActivity" />
+        <activity android:name=".activity.CanvasSaveRestoreActivity" />
+        <activity android:name=".activity.CanvasTranslateActivity" />
+        <activity android:name=".activity.CanvasScaleActivity"></activity>
     </application>
 
 </manifest>

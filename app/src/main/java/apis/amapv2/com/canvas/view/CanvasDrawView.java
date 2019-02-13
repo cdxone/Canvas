@@ -1,4 +1,4 @@
-package apis.amapv2.com.canvas;
+package apis.amapv2.com.canvas.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,22 +9,24 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class MyView extends View {
-    public MyView(Context context) {
+public class CanvasDrawView extends View {
+    public CanvasDrawView(Context context) {
         super(context);
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs) {
+    public CanvasDrawView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CanvasDrawView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //Canvas绘制颜色
+        drawColor(canvas);
 
         //绘制圆
         drawCircle(canvas);
@@ -34,6 +36,17 @@ public class MyView extends View {
 
         //绘制扇形
         drawArg2(canvas);
+
+        //绘制矩形
+        drawRect(canvas);
+    }
+
+    /**
+     * 给Canvas绘制背景
+     * @param canvas
+     */
+    private void drawColor(Canvas canvas) {
+        canvas.drawColor(Color.BLUE);
     }
 
     /**
@@ -92,5 +105,20 @@ public class MyView extends View {
         //第三个参数：-90度，表示的是逆时针旋转90度
         //第四个参数：是否显示中心，❤❤❤❤❤❤ 非常关键
         canvas.drawArc(rectF, -50, -90, false, paint);//绘制圆
+    }
+
+    /**
+     * 绘制矩形
+     * @param canvas
+     */
+    private void drawRect(Canvas canvas) {
+        //1、构造画笔
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+
+        //2、构造矩形:这个是限定了范围,限定了在地图上的什么范围。
+        RectF rectF = new RectF(0, 200, 200, 400);
+
+        canvas.drawRect(rectF,paint);
     }
 }
